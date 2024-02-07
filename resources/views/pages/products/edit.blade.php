@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit User')
+@section('title', 'Edit Product')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -16,58 +16,56 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Edit Users</h1>
+                <h1>Edit Products</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Users</a></div>
-                    <div class="breadcrumb-item">Users</div>
+                    <div class="breadcrumb-item"><a href="#">Products</a></div>
+                    <div class="breadcrumb-item">Products</div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Users</h2>
+                <h2 class="section-title">Products</h2>
                 <div class="card">
                     {{-- <div class="card-header">
                         <h4>Input Text</h4>
                     </div> --}}
                     <div class="card-body">
-                        <form action="{{ route('user.update', $user) }}" method="POST">
+                        <form action="{{ route('product.update', $product) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
                                 <label>Nama</label>
                                 <input type="text" class="form-control" name="name" id="name"
-                                    value="{{ $user->name }}" autofocus>
+                                    value="{{ $product->name }}" autofocus>
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="text" class="form-control" name="email" id="email"
-                                    value="{{ $user->email }}">
+                                <label>Price</label>
+                                <input type="number" class="form-control" name="price" id="price"
+                                    value="{{ $product->price }}">
                             </div>
                             <div class="form-group">
-                                <label>Phone</label>
-                                <input type="text" class="form-control" name="phone" id="phone"
-                                    value="{{ $user->phone }}" oninput="this.value = this.value.replace(/[^0-9]/g, '');"
-                                    pattern="[0-9]*">
-
+                                <label>Stock</label>
+                                <input type="number" class="form-control" name="stock" id="stock"
+                                    value="{{ $product->stock }}">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Roles</label>
+                                <label class="form-label">Category</label>
                                 <div class="selectgroup w-100">
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="Admin" class="selectgroup-input"
-                                            @if ($user->roles == 'Admin') checked @endif>
-                                        <span class="selectgroup-button">Admin</span>
+                                        <input type="radio" name="category" value="Food" class="selectgroup-input"
+                                            @if ($product->category == 'Food') checked @endif>
+                                        <span class="selectgroup-button">Food</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="Staff" class="selectgroup-input"
-                                            @if ($user->roles == 'Staff') checked @endif>
-                                        <span class="selectgroup-button">Staff</span>
+                                        <input type="radio" name="category" value="Drink" class="selectgroup-input"
+                                            @if ($product->category == 'Drink') checked @endif>
+                                        <span class="selectgroup-button">Drink</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="User" class="selectgroup-input"
-                                            @if ($user->roles == 'User') checked @endif>
-                                        <span class="selectgroup-button">User</span>
+                                        <input type="radio" name="category" value="Snack" class="selectgroup-input"
+                                            @if ($product->category == 'Snack') checked @endif>
+                                        <span class="selectgroup-button">Snack</span>
                                     </label>
                                 </div>
                             </div>

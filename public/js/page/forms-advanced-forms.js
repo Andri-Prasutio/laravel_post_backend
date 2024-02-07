@@ -87,3 +87,4 @@ $(".colorpickerinput").colorpicker({
 });
 $(".inputtags").tagsinput("items");
 
+

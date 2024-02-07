@@ -68,14 +68,36 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-$(document).ready(function(){
-    get_EditUser();
-})
+var myRow = document.getElementById('myRow');
+// Menampilkan elemen
+myRow.style.opacity = '1';
+// Mengatur animasi fade-out setelah 4 detik
+setTimeout(function() {
+    console.log("Fade-out animation started");
+    myRow.style.transition = 'opacity 1s ease-in';
+    myRow.style.opacity = '0';
+}, 4000);
+// Menghilangkan elemen setelah animasi selesai
+myRow.addEventListener('transitionend', function() {
+    console.log("Transition ended");
+    myRow.style.display = 'none';
+});
 
+function previewImage(event) {
+    var input = event.target;
+    var preview = document.getElementById('imagePreview');
 
-function get_EditUser(){
-    $(document).on('click','#btn_edit',function(){
-        var ID =$(this).attr('data-id');
-        console.log(ID);
-    })
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    } else {
+        preview.src = '#';
+        preview.style.display = 'none';
+    }
 }

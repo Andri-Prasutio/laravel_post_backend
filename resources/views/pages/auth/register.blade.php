@@ -8,7 +8,7 @@
 @endpush
 
 @section('main')
-    <div class="card card-primary" style="margin-top: -50px">
+    <div class="card card-danger" style="margin-top: -50px">
         <div class="card-header">
             <h4>Register</h4>
         </div>
